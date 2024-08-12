@@ -1,0 +1,19 @@
+import hashlib
+import hmac
+import io
+
+#引用 https://docs.python.org/zh-cn/3/library/hashlib.html
+with open(hashlib.__file__, "rb") as f:
+    digest = hashlib.file_digest(f, "sha256")
+
+# 字节流
+buf = io.BytesIO(b"somedata")
+mac1 = hmac.HMAC(b"key", digestmod=hashlib.sha512)
+digests = hashlib.file_digest(buf, lambda: mac1)
+
+mac2 = hmac.HMAC(b"key", b"somedata", digestmod=hashlib.sha512)
+mac1.digest() == mac2.digest()
+
+if "__main__" == __name__:
+    print(digest.hexdigest())
+    print(mac1.digest() == mac2.digest())
