@@ -1,7 +1,7 @@
 import hashlib
 import hmac
 import io
-
+#引用 https://blog.csdn.net/xufive/article/details/109022519
 #引用 https://docs.python.org/zh-cn/3/library/hashlib.html
 with open(hashlib.__file__, "rb") as f:
     digest = hashlib.file_digest(f, "sha256")
