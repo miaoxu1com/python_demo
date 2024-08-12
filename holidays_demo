@@ -1,5 +1,5 @@
 
-#chinese-calendar库
+#chinese-calendar库 Holiday-CN库
 
 import datetime
 # 判断 2024年5月1号 是不是节假日
