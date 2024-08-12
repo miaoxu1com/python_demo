@@ -1,0 +1,9 @@
+
+#chinese-calendar库
+
+import datetime
+# 判断 2024年5月1号 是不是节假日
+from chinese_calendar import is_holiday, is_workday
+labor_day = datetime.date(2024, 5, 1)
+print(is_workday(labor_day))
+print(is_holiday(labor_day))
