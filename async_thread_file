@@ -1,0 +1,47 @@
+import asyncio
+import concurrent.futures
+import os
+import time
+
+import aiofiles
+
+
+async def write_file_async(filename):
+    async with aiofiles.open(filename, mode='w') as file:
+        await file.write("Hello World")
+
+
+async def main_async():
+    filenames = [f"file_{i}.txt" for i in range(10)]
+    start_time = time.time()
+    await asyncio.gather(*[write_file_async(fn) for fn in filenames])
+    end_time = time.time()
+    total_time = end_time - start_time
+    return total_time
+
+
+total_time_async = asyncio.run(main_async())
+print(f"Total time (async): {total_time_async:.2f} seconds")
+
+
+def write_file_threaded(filename):
+    with open(filename, mode='w') as file:
+        file.write("Hello World")
+
+
+def main_threaded():
+    filenames = [f"file_{i}.txt" for i in range(10)]
+    num_cpus = os.cpu_count()
+    start_time = time.time()
+    with concurrent.futures.ThreadPoolExecutor(max_workers=num_cpus) as executor:
+        list(executor.map(write_file_threaded, filenames))
+    end_time = time.time()
+    total_time = end_time - start_time
+    return total_time
+
+
+total_time_threaded = main_threaded()
+print(f"Total time (threaded): {total_time_threaded:.2f} seconds")
+
+Total time (async): 0.17 seconds
+Total time (threaded): 0.19 seconds
