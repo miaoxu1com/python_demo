@@ -1,6 +1,10 @@
 import threading
 import time
 
+# 引用
+# https://blog.csdn.net/exmlyshy/article/details/85220762
+# https://www.cnblogs.com/niulang/p/15088612.html
+
 def read():
     i = 0
     while True:
