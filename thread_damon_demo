@@ -1,0 +1,30 @@
+import threading
+import time
+
+def read():
+    i = 0
+    while True:
+        # 不阻塞线程的执行
+        print(f'{i}')
+        i += 1
+        time.sleep(2)
+        if i > 11:
+            break
+
+def write():
+    while True:
+        # 只输出一次的原因是因为input()函数会阻塞程序的执行，直到用户输入一些文本并按下回车键
+        s = input("please input")
+        if s == 'EXIT':
+            break
+        time.sleep(1)
+
+
+if __name__ == '__main__':
+    print('test begin...')
+    tw = threading.Thread(target=write)
+    # 防止主线程挂掉，子线变成程僵尸进程，守护线程意味着当主程序（或任何非守护线程）完成其执行时，tr将自动终止。
+    # 这防止了在主程序完成后子线程成为孤儿线程继续运行
+    tr = threading.Thread(target=read, daemon=True)
+    tr.start()
+    tw.start()
