@@ -17,7 +17,7 @@ while True:
     time.sleep(1)
     print("Main thread finished.")
 
-
+不阻塞方法1
 import threading
 import time
 
@@ -35,3 +35,36 @@ thread.start()
 while True:
     time.sleep(1)
     print("Main thread finished.")
+
+不阻塞方法2  我的目的是在所有子线程完成之前主线程不阻塞
+import concurrent.futures
+import time
+
+
+def worker(x):
+    time.sleep(2)  # 模拟耗时操作
+    print(f"Worker {x} finished.")
+    return x * x
+
+
+def main():
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        # 提交任务到线程池
+        results = {executor.submit(worker, x) for x in range(5)}
+
+        # 主线程继续执行其他操作，这里是主线程代码
+        print("Main thread continues to run in parallel.")
+
+        # 假设这里有其他非阻塞操作
+
+        # 以下代码不是必须的，仅用于演示如何在主线程中处理子线程的结果
+        # 如果你不需要在主线程中处理结果，可以省略这部分
+        for future in concurrent.futures.as_completed(results):
+            result = future.result()
+            print(f"Result: {result}")
+
+    print("All tasks completed.")
+
+
+if __name__ == "__main__":
+    main()
