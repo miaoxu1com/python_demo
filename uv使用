@@ -20,8 +20,10 @@ https://www.fournoas.com/posts/rye-python-environment-and-package-management-too
 uv 和 pyenv 压缩包都是tar.gz包，是使用开源的压缩格式
 
 pyenv
-PYTHON_BUILD_MIRROR_URL 设置下载加速地址 https://jedore.netlify.app/tools/python-mirrors/
+安装
+https://www.jianshu.com/p/8846c488a568
 
+PYTHON_BUILD_MIRROR_URL 设置下载加速地址 https://jedore.netlify.app/tools/python-mirrors/
 参考：https://blog.csdn.net/qq_34419312/article/details/140447081
 
 uv 
