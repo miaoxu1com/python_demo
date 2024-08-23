@@ -12,6 +12,7 @@ uv 和 pyenv 类似的方法都是tar.gz包
 https://docs.astral.sh/uv/concepts/python-versions/#managed-python-distributions
 
 pypy cpython
+https://www.python.org/download/alternatives/
 https://blog.csdn.net/m0_51971452/article/details/115279922
 
 环境变量和配置文件
