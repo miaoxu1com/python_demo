@@ -6,6 +6,7 @@ https://blog.csdn.net/m0_51971452/article/details/115279922
 uv环境变量和配置文件同时使用来配置
 
 uv 管理python 
+uv 最新版支持python版本管理 CPython、PyPy 和 GraalPy Python
 
 uv 使用手册
 https://docs.astral.sh/uv/configuration/environment/
@@ -19,6 +20,9 @@ PYTHON_BUILD_MIRROR_URL 设置下载加速地址 https://jedore.netlify.app/tool
 
 uv 
 UV_PYTHON_INSTALL_MIRROR 设置下载加速地址 https://mirror.ghproxy.com/https://github.com/indygreg/python-build-standalone/releases/download
+参考：https://docs.astral.sh/uv/configuration/environment/
+
+
 
 官方
 https://www.python.org/ftp/python/
