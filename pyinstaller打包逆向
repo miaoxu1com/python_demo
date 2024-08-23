@@ -11,8 +11,12 @@ uv 和 pyenv 类似的方法都是tar.gz包
 
 https://docs.astral.sh/uv/concepts/python-versions/#managed-python-distributions
 
+pypy cpython
+https://blog.csdn.net/m0_51971452/article/details/115279922
+
 环境变量和配置文件
 https://blog.csdn.net/qq_34419312/article/details/140447081
+
 
 python镜像
 https://jedore.netlify.app/tools/python-mirrors/
