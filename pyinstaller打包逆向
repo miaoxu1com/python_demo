@@ -7,23 +7,6 @@ https://www.cnblogs.com/czlnb/p/15118864.html
 https://blog.csdn.net/yi_rui_jie/article/details/128661975
 https://vra.github.io/2023/05/17/rye-intro/
 
-uv 和 pyenv 类似的方法都是tar.gz包
-pyenv
-PYTHON_BUILD_MIRROR_URL 设置下载加速地址 https://jedore.netlify.app/tools/python-mirrors/
-
-uv 
-UV_PYTHON_INSTALL_MIRROR 设置下载加速地址 https://mirror.ghproxy.com/https://github.com/indygreg/python-build-standalone/releases/download
-
-https://docs.astral.sh/uv/concepts/python-versions/#managed-python-distributions
-
-pypy cpython
-https://www.python.org/download/alternatives/
-https://blog.csdn.net/m0_51971452/article/details/115279922
-
-环境变量和配置文件
-https://blog.csdn.net/qq_34419312/article/details/140447081
-
-
 python镜像
 https://jedore.netlify.app/tools/python-mirrors/
 
