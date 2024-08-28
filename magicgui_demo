@@ -1,5 +1,6 @@
 # 需要依赖pyqt5
 # pip install magicgui[pyqt5] 安装magicgui并安装依赖
+# https://www.pytk.net/ tk布局助手
 from enum import Enum
 
 from magicgui import magicgui
