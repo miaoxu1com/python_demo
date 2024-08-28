@@ -1,0 +1,23 @@
+import logging
+import colorlog
+
+#https://www.cnblogs.com/xyztank/articles/13598633.html
+
+log_colors_config = {
+    # 终端输出日志颜色配置
+    'DEBUG': 'thin_blue',
+    'INFO': 'bold_green',
+    'WARNING': 'yellow',
+    'ERROR': 'red',
+    'CRITICAL': 'bold_red',
+}
+logger = logging.getLogger('my_logger')
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+log_format = '%(asctime)s - %(filename)s,%(lineno)s - %(levelname)s - %(message)s'
+formatter = logging.Formatter(log_format)
+colorlog_format = '%(log_color)s' + log_format
+color_formatter = colorlog.ColoredFormatter(colorlog_format, log_colors=log_colors_config)
+ch.setFormatter(color_formatter)
+logger.addHandler(ch)
