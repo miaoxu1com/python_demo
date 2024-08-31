@@ -8,6 +8,7 @@ import grequests
 import httpx
 import requests
 
+
 session = requests.Session()
 req_list = [grequests.get('https://www.baidu.com', session=session) for i in range(100)]
 start = time.time()
@@ -82,8 +83,9 @@ async def httpx_main():
 total_time = asyncio.run(httpx_main())
 print(f"httpx time: {total_time:.2f} seconds")
 
-grequests: 0.45383763313293457
-Aiohttp + asyncio: 0.5920767784118652 seconds
-Pure asyncio: 0.020534992218017578 seconds
-Multithreading: 0.43889522552490234 seconds
-httpx time: 0.64 seconds
+# grequests: 0.45383763313293457
+# Aiohttp + asyncio: 0.5920767784118652 seconds
+# Aiohttp + uvloop + asyncio 说明：uvloop不支持windows
+# Pure asyncio: 0.020534992218017578 seconds
+# Multithreading: 0.43889522552490234 seconds
+# httpx time: 0.64 seconds
