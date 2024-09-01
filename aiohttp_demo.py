@@ -3,6 +3,9 @@ import aiohttp
 import time
 
 
+# python中的懒加载就是生成器，需要时加载数据不一次性加载所有数据，生成器要整个过程都是用生成器，
+# 读取的文件/数据的时候就要支持用生成器，否则还是会加载所有数据到内存
+
 async def send_post_request():
     url = "https://httpbin.org/post"  # 目标 URL
 
