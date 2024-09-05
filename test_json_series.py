@@ -1,5 +1,6 @@
 import time
 from functools import wraps
+from sys import getsizeof
 
 import cysimdjson
 import json_lineage
@@ -32,6 +33,7 @@ def logit():
 def read_json_by_simplejson(fname):
     with open(fname, mode="r", encoding="utf-8") as f:
         data = sjson.load(f)
+        print(f"simplejson {getsizeof(data)} Bytes")
 
 
 read_json_by_simplejson(fname)
@@ -42,6 +44,7 @@ read_json_by_simplejson(fname)
 def read_json_by_ujson(fname):
     with open(fname, mode="r", encoding="utf-8") as f:
         data = ujson.load(f)
+        print(f"ujson {getsizeof(data)} Bytes")
 
 
 read_json_by_ujson(fname)
@@ -52,6 +55,7 @@ read_json_by_ujson(fname)
 def read_json_by_rapidjson(fname):
     with open(fname, mode="r", encoding="utf-8") as f:
         data = rapidjson.load(f)
+        print(f"rapidjson {getsizeof(data)} Bytes")
 
 
 read_json_by_rapidjson(fname)
@@ -62,6 +66,7 @@ read_json_by_rapidjson(fname)
 def read_json_by_orjson(fname):
     with open(fname, mode="rb") as f:
         data = orjson.loads(f.read())
+        print(f"orjson {getsizeof(data)} Bytes")
 
 
 read_json_by_orjson(fname)
@@ -72,6 +77,7 @@ read_json_by_orjson(fname)
 def read_json_by_json_lineage(fname):
     with open(fname, mode="r", encoding="utf-8") as f:
         data = json_lineage.load(f.read())
+        print(f"json_lineage {getsizeof(data)} Bytes")
 
 
 read_json_by_json_lineage(fname)
@@ -83,7 +89,7 @@ parser = cysimdjson.JSONParser()
 @logit()
 def read_json_by_json_cysimdjson(fname):
     data = parser.load(fname)
-    # print(data)
+    print(f"cysimdjson {getsizeof(data)} Bytes")
 
 
 read_json_by_json_cysimdjson(fname)
@@ -94,6 +100,7 @@ read_json_by_json_cysimdjson(fname)
 def read_json_by_json_simdjson(fname):
     with open(fname, mode="r", encoding="utf-8") as f:
         data = simdjson.load(f)
+        print(f"simdjson {getsizeof(data)} Bytes")
 
 
 read_json_by_json_simdjson(fname)
@@ -113,6 +120,7 @@ alice = User("alice", groups={"admin", "engineering"})
 @logit()
 def read_json_by_json_msgspec():
     msg = msgspec.json.encode(alice)
+    print(f"{getsizeof(msg)} Bytes")
 
 
 read_json_by_json_msgspec()
