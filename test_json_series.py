@@ -85,7 +85,7 @@ read_json_by_json_lineage(fname)
 parser = cysimdjson.JSONParser()
 
 
-# 耗时 0.03291010856628418秒  最快
+# 耗时 0.03291010856628418秒  最快 内存最小
 @logit()
 def read_json_by_json_cysimdjson(fname):
     data = parser.load(fname)
