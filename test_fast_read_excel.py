@@ -1,5 +1,7 @@
 # Reading Excel using Pandas
 import time
+from functools import wraps
+from sys import getsizeof
 from typing import IO, Iterator
 
 import duckdb
@@ -76,87 +78,93 @@ def iter_excel_calamine(file: IO[bytes]) -> Iterator[dict[str, object]]:
         yield dict(zip(headers, row))
 
 
+def logit():
+    def logging_decorator(func):
+        @wraps(func)
+        def wrapped_function(*args, **kwargs):
+            start_time = time.time()
+            func(*args, **kwargs)
+            end_time = time.time()
+            #     for key, expected_value in row.items():
+            #         try:
+            #             value = row[key]
+            #         except KeyError:
+            #             print(f'🔴 "{key}" missing')
+            #             continue
+            #         if type(expected_value) != type(value):
+            #             print(f'🔴 "{key}" expected type "{type(expected_value)}" received type "{type(value)}"')
+            #         elif expected_value != value:
+            #             print(f'🔴 "{key}" expected value "{expected_value}" received "{value}"')
+            #         else:
+            #             print(f'🟢 "{key}"')
+            #     print(row)
+            print(f'{end_time - start_time}s')
+
+        return wrapped_function
+
+    return logging_decorator
+
+
+fname = 'output.xlsx'
+
+
 # excel 1048576行
 # 使用 Pandas 读取 Excel 290.08141565322876秒
-# start_time = time.time()
-# with open('output.xlsx', 'rb') as f:
-#     rows = iter_excel_pandas(f)
-#     row = next(rows)
-#     print(row)
-# end_time = time.time()
-# print(end_time - start_time)
+@logit()
+def read_excel_pandas(fname):
+    with open(fname, 'rb') as f:
+        rows = iter_excel_pandas(f)
+        row = next(rows)
+        print(f"pandas {getsizeof(row)} Bytes")
+
+
+# read_excel_pandas(fname)
+
 
 # 使用 Tablib 读取 Excel 281.5894687175751秒
-# start_time = time.time()
-# with open('output.xlsx', 'rb') as f:
-#     rows = iter_excel_tablib(f)
-#     row = next(rows)
-#     print(row)
-# end_time = time.time()
-# print(end_time - start_time)
-#
+@logit()
+def read_excel_tablib(fname):
+    with open(fname, 'rb') as f:
+        rows = iter_excel_tablib(f)
+        row = next(rows)
+        print(f"tablib {getsizeof(row)} Bytes")
+
+
+# read_excel_tablib(fname)
+
 
 # 使用 Openpyxl 读取 Excel 只读模式 72.3786690235138秒  打印类型和数据
-# start_time = time.time()
-# with open('output.xlsx', 'rb') as f:
-#     rows = iter_excel_openpyxl(f)
-#     row = next(rows)
-#     for key, expected_value in row.items():
-#         try:
-#             value = row[key]
-#         except KeyError:
-#             print(f'🔴 "{key}" missing')
-#             continue
-#         if type(expected_value) != type(value):
-#             print(f'🔴 "{key}" expected type "{type(expected_value)}" received type "{type(value)}"')
-#         elif expected_value != value:
-#             print(f'🔴 "{key}" expected value "{expected_value}" received "{value}"')
-#         else:
-#             print(f'🟢 "{key}"')
-#     print(row)
-# end_time = time.time()
-# print(end_time - start_time)
+@logit()
+def read_excel_openpyxl(fname):
+    with open(fname, 'rb') as f:
+        rows = iter_excel_openpyxl(f)
+        row = next(rows)
+        print(f"openpyxl {getsizeof(row)} Bytes")
+
+
+# read_excel_openpyxl(fname)
+
 
 # 使用 DuckDB 读取 Excel iter_excel_duckdb  131.47663760185242秒
 # 使用 DuckDB 读取 Excel iter_excel_duckdb_execute 82.50024008750916秒
-# start_time = time.time()
-# with open('output.xlsx', 'rb') as f:
-#     rows = iter_excel_duckdb_execute(f)
-#     row = next(rows)
-#     for key, expected_value in row.items():
-#         try:
-#             value = row[key]
-#         except KeyError:
-#             print(f'🔴 "{key}" missing')
-#             continue
-#         if type(expected_value) != type(value):
-#             print(f'🔴 "{key}" expected type "{type(expected_value)}" received type "{type(value)}"')
-#         elif expected_value != value:
-#             print(f'🔴 "{key}" expected value "{expected_value}" received "{value}"')
-#         else:
-#             print(f'🟢 "{key}"')
-#     print(row)
-# end_time = time.time()
-# print(end_time - start_time)
+@logit()
+def read_excel_duckdb_execute(fname):
+    with open(fname, 'rb') as f:
+        rows = iter_excel_duckdb_execute(f)
+        row = next(rows)
+        print(f"duckdb_execute {getsizeof(row)} Bytes")
 
-# 使用Calamine读取 Excel 22.9017071723938秒
-start_time = time.time()
-with open('output.xlsx', 'rb') as f:
-    rows = iter_excel_calamine(f)
-    row = next(rows)
-    for key, expected_value in row.items():
-        try:
-            value = row[key]
-        except KeyError:
-            print(f'🔴 "{key}" missing')
-            continue
-        if type(expected_value) != type(value):
-            print(f'🔴 "{key}" expected type "{type(expected_value)}" received type "{type(value)}"')
-        elif expected_value != value:
-            print(f'🔴 "{key}" expected value "{expected_value}" received "{value}"')
-        else:
-            print(f'🟢 "{key}"')
-    print(row)
-end_time = time.time()
 
-print(end_time - start_time)
+# read_excel_duckdb_execute(fname)
+
+
+# 使用Calamine读取 Excel 22.9017071723938秒 最快  内存占的多一些
+@logit()
+def read_excel_calamine(fname):
+    with open(fname, 'rb') as f:
+        rows = iter_excel_calamine(f)
+        row = next(rows)
+        print(f"calamine {getsizeof(row)} Bytes")
+
+
+read_excel_calamine(fname)
