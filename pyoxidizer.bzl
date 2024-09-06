@@ -6,7 +6,8 @@ cpython-3.10.9%2B20221220-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst
 C:\Users\username\AppData\Local\pyoxidizer\rust
 cargo-1.66.0-x86_64-pc-windows-msvc.tar.xz
 rustc-1.66.0-x86_64-pc-windows-msvc.tar.xz
-
+rust-std-1.66.0-x86_64-pc-windows-msvc.tar.xz
+放入后下载最新版本重新覆盖,未尝试
 镜像:https://rsproxy.cn/dist/2022-12-15/cargo-1.66.0-x86_64-pc-windows-msvc.tar.xz
 官网:https://static.rust-lang.org/dist/2022-12-15/cargo-1.66.0-x86_64-pc-windows-msvc.tar.xz
 
