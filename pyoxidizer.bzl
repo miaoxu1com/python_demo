@@ -1,4 +1,6 @@
 放入目录自动解压存在的压缩文件
+https://ezirmusitua.site/blog/package-python-application-with-pyoxidizer
+
 C:\Users\username\AppData\Local\pyoxidizer\python_distributions
 cpython-3.10.9%2B20221220-x86_64-pc-windows-msvc-shared-pgo-full.tar.zst
 C:\Users\username\AppData\Local\pyoxidizer\rust
@@ -7,6 +9,31 @@ rustc-1.66.0-x86_64-pc-windows-msvc.tar.xz
 
 镜像:https://rsproxy.cn/dist/2022-12-15/cargo-1.66.0-x86_64-pc-windows-msvc.tar.xz
 官网:https://static.rust-lang.org/dist/2022-12-15/cargo-1.66.0-x86_64-pc-windows-msvc.tar.xz
+
+执行 pyoxidizer run 开始构建每次pyoxidizer 随机生成一个临时目录C:\Users\username\AppData\Local\Temp\pyoxidizer1spl1y\app
+进入目录Cargo.toml目录下的.cargo目录下的config改为
+
+[source.crates-io]
+#registry = "https://github.com/rust-lang/crates.io-index"
+# 指定镜像
+replace-with = 'tuna' # 如：tuna、sjtu、ustc，或者 rustcc
+
+# 中国科学技术大学
+[source.ustc]
+registry = "https://mirrors.ustc.edu.cn/crates.io-index"
+
+# 上海交通大学
+[source.sjtu]
+registry = "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index/"
+
+# 清华大学
+[source.tuna]
+registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+
+# rustcc社区
+[source.rustcc]
+registry = "https://code.aliyun.com/rustcc/crates.io-index.git"
+
 
 def make_exe():
     dist = default_python_distribution()
