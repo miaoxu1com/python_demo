@@ -26,7 +26,7 @@ pyi-makespec main.py
     注释其他地方的translation_base_names不打包翻译文件
   plugins优化删除
     collect_module方法中 增加logger.debug("name is shi {qt_module_info.plugins}")，打印调试
-    执行命令触发调用py打印信息调试,pyinstaller --clean --log-level DEBUG main.spec ,控制台定位调试信息位置，找到代码动态获取的插件信息，copy找到的信息，删除不需要，添加需要的
+    执行命令触发调用py打印信息调试,pyinstaller -Fw -i main.ico --clean --log-level DEBUG main.spec ,控制台定位调试信息位置，找到代码动态获取的插件信息，copy找到的信息，删除不需要，添加需要的
     在# Collect plugin files.下面赋值
     plugin_types = set(['iconengines', 'styles', 'platforms', 'platforms/darwin', 'platforminputcontexts',
                             'xcbglintegrations', 'wayland-decoration-client', 'wayland-graphics-integration-client',
