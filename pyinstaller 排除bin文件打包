@@ -1,14 +1,27 @@
+参考文章
 # https://stackoverflow.com/questions/58097858/how-to-exclude-opengl32sw-dll-from-pyqt5-library-when-using-pyinstaller
+# https://cloud.tencent.com/developer/ask/sof/651140
+# https://blog.csdn.net/wowocpp/article/details/103734547
+一、方法1
+pyi-makespec main.py
 \.venv\Lib\site-packages\PyInstaller\hooks\hook-PyQt5.py
 1.路径是pyinstaller的pyqt5hook文件地址
 2.排除打包
 3.比如要排除不需要的占用空间大的文件，定位删除不用的文件的方法是，启动程序删除文件，占用文件无法删除，就知道那个文件夹那个文件在用
   dll文件
-  collect_extra_binaries 
-  注释一下代码
-  # binaries += self._collect_all_or_none(['libEGL.dll', 'libGLESv2.dll'], ['d3dcompiler_??.dll'])
-  # binaries += self._collect_all_or_none(['opengl32sw.dll'])
+  collect_extra_binaries函数中，注释以下代码
+    # binaries += self._collect_all_or_none(['libEGL.dll', 'libGLESv2.dll'], ['d3dcompiler_??.dll'])
+    # binaries += self._collect_all_or_none(['opengl32sw.dll'])
   qm翻译文件
-  translation_base_names = set()
-  注释其他地方的translation_base_names不打包翻译文件
+    translation_base_names = set()
+    注释其他地方的translation_base_names不打包翻译文件
+  plugins优化删除
+    collect_module方法中 增加logger.debug("name is shi {qt_module_info.plugins}")，打印调试
+    执行pyinstaller --clean --log-level DEBUG main.spec ,控制台定位调试信息位置，找到代码动态获取的插件信息，copy找到的信息，删除不需要，添加需要的
+    在# Collect plugin files.下面赋值
+    plugin_types = set(['iconengines', 'styles', 'platforms', 'platforms/darwin', 'platforminputcontexts',
+                            'xcbglintegrations', 'wayland-decoration-client', 'wayland-graphics-integration-client',
+                            'wayland-shell-integration'])
 
+二、方法2
+直接删除venv虚拟环境下的qt5源文件，此方法通用
