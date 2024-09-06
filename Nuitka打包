@@ -1,0 +1,45 @@
+pyqt程序Nuitka打包
+1.首先下载nuitkaui Toolkit打包程序 nuitkaui Toolkit是nuitka的gui工具，还是要python环境依赖nuitkaui，虚拟环境中需要安装nuitkaui才行，才能使用nuitkaui Toolkit打包 uv会创建exe文件的shim就是会自动把exe加入到环境变量类似pipx把exe变成全局工具，uv=pipx+pip python安装nuitka包
+
+uv pip install nuitka
+nuitka也会打包python3.dll ，pyinstaller也会打包 nuitkaui依赖程序下载，nuitkaui需要winlibs_mingw进行编译，而且需要安装提示的指定的版本，而且必须是zip的压缩包，放到指定的目录，程序会自动解压缩
+
+下载
+
+命令行打包 python.exe -m nuitka --output-filename=main --onefile --onefile-tempdir-spec=./main_cache --standalone --windows-disable-console --remove-output --no-pyi-file --mingw64 --assume-yes-for-downloads --output-dir=nuitka_output --enable-plugin=pyqt5 --windows-icon-from-ico=main.ico --include-module=pywin32_bootstrap main.py
+
+winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64msvcrt-11.0.1-r1.zip版本下载放到指定目录即可 指定目录位置是C:\Users\用户名\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64 而且要精确版本号
+https://blog.csdn.net/qq_17328759/article/details/120230311
+
+2.ccache安装
+
+下载
+
+配置ccache到环境变量，方便编译时调用
+
+Nuitka打包参数
+image-20240718020217913
+
+注意
+1.Nuitka打包程序不要放在中文目录中否则打包会报错
+2.系统关联的解压程序不要放在中文目录中，nuitkaui调用解压程序会报错
+3.pycharm git提交时忽略文件不是.idea 是放在git中的忽略文件
+4.Nuitka打包容易被杀毒软件拦截，需要添加白名单信任
+5.Nuitka打包的程序运行时也被杀毒软件拦截也需要添加信任
+6.如果打包的程序依赖外部配置文件需要把配置文件夹和exe放入同一个目录才能启动否则启动失败
+
+环境下载：
+https://www.winlibs.com
+https://mirrors.tuna.tsinghua.edu.cn/cygwin/x86_64/release/mingw64-x86_64-gcc/
+https://www.mingw-w64.org/downloads/#msys2
+https://juejin.cn/post/7209906040921538620
+https://www.cnblogs.com/spfanlost/p/13764188.html
+https://blog.csdn.net/Dreamhai/article/details/109842184
+https://mirrors.aliyun.com/cygwin/x86_64/release/mingw64-x86_64-gcc/
+https://github.com/brechtsanders/winlibs_mingw/releases
+https://www.mingw-w64.org/downloads/
+https://github.com/niXman/mingw-builds-binaries/releases
+rust环境安装
+https://markhoo.github.io/posts/install-rust/
+https://rustwiki.org/zh-CN/edition-guide/rust-2018/platform-and-target-support/msvc-toolchain-support.html
+https://course.rs/first-try/installation.html
