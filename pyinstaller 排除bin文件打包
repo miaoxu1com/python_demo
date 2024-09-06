@@ -1,0 +1,14 @@
+# https://stackoverflow.com/questions/58097858/how-to-exclude-opengl32sw-dll-from-pyqt5-library-when-using-pyinstaller
+\.venv\Lib\site-packages\PyInstaller\hooks\hook-PyQt5.py
+1.路径是pyinstaller的pyqt5hook文件地址
+2.排除打包
+3.比如要排除不需要的占用空间大的文件，定位删除不用的文件的方法是，启动程序删除文件，占用文件无法删除，就知道那个文件夹那个文件在用
+  dll文件
+  collect_extra_binaries 
+  注释一下代码
+  # binaries += self._collect_all_or_none(['libEGL.dll', 'libGLESv2.dll'], ['d3dcompiler_??.dll'])
+  # binaries += self._collect_all_or_none(['opengl32sw.dll'])
+  qm翻译文件
+  translation_base_names = set()
+  注释其他地方的translation_base_names不打包翻译文件
+
