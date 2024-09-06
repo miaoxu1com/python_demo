@@ -125,3 +125,5 @@ Person.run()
 del Person.run
 
 # attrs 库 装饰器设置类
+
+# os.path 动态获取路径 os.path.normcase
