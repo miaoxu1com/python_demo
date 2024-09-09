@@ -1,3 +1,5 @@
+# 命令查看
+# https://gregoryszorc.com/docs/pyoxidizer/main/pyoxidizer_config_type_python_interpreter_config.html#starlark_pyoxidizer.PythonInterpreterConfig.run_filename
 放入目录自动解压存在的压缩文件
 https://ezirmusitua.site/blog/package-python-application-with-pyoxidizer
 
