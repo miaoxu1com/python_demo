@@ -12,7 +12,8 @@ rust-std-1.66.0-x86_64-pc-windows-msvc.tar.xz
 rust镜像源：https://rsproxy.cn/#getStarted
 镜像:https://rsproxy.cn/dist/2022-12-15/cargo-1.66.0-x86_64-pc-windows-msvc.tar.xz
 官网:https://static.rust-lang.org/dist/2022-12-15/cargo-1.66.0-x86_64-pc-windows-msvc.tar.xz
-
+可以先下载文件，【github 下载加速】将文件放置在pyapp\build\python_distributions 文件夹下即可，再次运行加载编译。如下如即成功： pyapp\build\python_distributions
+修改全局cargo源  c:\Users\username\.cargo
 执行 pyoxidizer run 开始构建每次pyoxidizer 随机生成一个临时目录C:\Users\username\AppData\Local\Temp\pyoxidizer1spl1y\app
 进入目录Cargo.toml目录下的.cargo目录下的config改为
 
