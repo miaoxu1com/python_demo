@@ -2,6 +2,8 @@
 # https://stackoverflow.com/questions/58097858/how-to-exclude-opengl32sw-dll-from-pyqt5-library-when-using-pyinstaller
 # https://cloud.tencent.com/developer/ask/sof/651140
 # https://blog.csdn.net/wowocpp/article/details/103734547
+# https://www.cnblogs.com/jackadam/p/10342627.html
+
 一、方法1
 pyi-makespec main.py
 1.路径是pyinstaller的pyqt5hook文件地址
