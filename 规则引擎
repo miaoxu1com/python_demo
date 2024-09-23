@@ -24,3 +24,12 @@ groovy
 其他脚本引用的就是这个 class 文件
 
 BeanShell
+
+财务金融领域
+推荐的表达式引擎
+JEXL (Java Expression Language)：由Apache开发，非常适合于需要动态执行表达式的场景。
+MVEL (MVFLEX Velocity Engine Language)：轻量级且非常快，适合嵌入到各种Java应用程序中。
+JUEL (Java Unified Expression Language)：基于JSR-245规范，易于与其他Java技术集成。
+SpeL (Spring Expression Language)：Spring框架的一部分，提供强大的表达式解析功能，特别适合于Spring应用
+
+选择支持热部署和动态修改公式的表达式引擎
