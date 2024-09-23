@@ -1,0 +1,25 @@
+https://zhuanlan.zhihu.com/p/482763434#:~:text=2.5%20Drools
+
+Aviator——轻量级Java表达式求值引擎
+Aviator的设计目标是轻量级和高性能 ，相比于Groovy、JRuby的笨重，Aviator非常小，加上依赖包也才450K,不算依赖包的话只有70K；当然，Aviator的语法是受限的，它不是一门完整的语言，而只是语言的一小部分集合
+
+金融计算引擎 Fin-Expr
+https://blog.csdn.net/weixin_43333483/article/details/126691859#:~:text=%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%98%85%E8%AF%BB7.4k
+
+
+Easy Rules
+
+Ilog JRules 是完整的业务规则管理系统 (BRMS)，它提供了对整个企业业务规则进行建模、编写、测试、部署和维护所必需的所有工具。
+IBM WebSphere ILOG JRules 是目前业界领先的业务规则管理平台。与传统的由 IT 人员用硬代码来维护规则的做法不同，ILOG JRules 让业务用户能够在不依赖或者有限依赖于 IT 人员的情况下，快速创建、修改、测试和部署业务规则，以满足经常变化的业务需求。ILOG JRules 提供了一整套的工具，帮助开发人员和业务人员进行规则的全生命周期管理。
+基于 Rete 算法实现。
+
+Drools 是用 Java 语言编写的开放源码规则引擎，基于 Apache 协议，基于 RETE 算法，于 2005 年被 JBoss 收购。
+Drools 是一个绝对重量级的规则引擎，很多像金融行业、电信行业的大公司都在使用它作为规则引擎。
+Drools 通过 事实、规则和模式相互组合来完成工作，drools 在开源规则引擎中使用率最广，但是在国内企业使用偏少，保险、支付行业使用稍多。
+
+
+groovy
+每当这脚本有改动，要用 groovyc 重新编译（生成的 class 文件跟 java 一样，用 jad 反编译就能看到 java 代码）
+其他脚本引用的就是这个 class 文件
+
+BeanShell
