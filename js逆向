@@ -3,3 +3,20 @@ https://blog.xhyeax.com/2021/11/20/frida-script-debug-env-setup-vscode-devtools/
 https://github.com/jxhczhl/JsRpc
 https://github.com/outlaws-bai/Galaxy/blob/main/docs/Custom.md
 https://github.com/outlaws-bai/GalaxyDemo
+
+Galaxy插件安装
+├─BurpSuite
+│  ├─jenv
+│  ├─lib
+│  └─pyenv
+├─jre
+1.jre环境安装jdk
+2.jenv放入jython-standalone-x.x.x.jar
+3.pyenv放入python-language-x.x.x.jar
+graalvm
+https://mvnrepository.com/artifact/org.graalvm.python/python-language/24.1.0
+4.配置burpsuite
+java environment 配置为jenv目录
+python environment 配置为python-language-x.x.x.jar
+
+安装就可以成功
