@@ -1,6 +1,7 @@
 pyqt程序Nuitka打包
 1.首先下载nuitkaui Toolkit打包程序 nuitkaui Toolkit是nuitka的gui工具，还是要python环境依赖nuitkaui，虚拟环境中需要安装nuitkaui才行，才能使用nuitkaui Toolkit打包 uv会创建exe文件的shim就是会自动把exe加入到环境变量类似pipx把exe变成全局工具，uv=pipx+pip python安装nuitka包
 备注：用下来还是用nuitka命令行更方便
+python.exe -m nuitka 可以使用python -m都是python代码可以查看源代码
 build.bat
 D:/descrpypython/.venv/Scripts/python.exe -m nuitka 
 --output-filename=main 
@@ -43,6 +44,8 @@ for r in self._findQtPluginDLLs():
    if "printsupport" in r.dest_path:
         continue
 D:\descrpypython\.venv\Lib\site-packages\nuitka\Options.py文件中定义了命令行支持的参数
+
+已经存在同名运行中的进程，nuitak无法编译会报错
 
 uv pip install nuitka
 nuitka也会打包python3.dll ，pyinstaller也会打包 nuitkaui依赖程序下载，nuitkaui需要winlibs_mingw进行编译，而且需要安装提示的指定的版本，而且必须是zip的压缩包，放到指定的目录，程序会自动解压缩
