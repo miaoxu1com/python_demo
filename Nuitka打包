@@ -16,6 +16,7 @@ D:/descrpypython/.venv/Scripts/python.exe -m nuitka
 --enable-plugin=pyqt5 
 D:/descrpypython/main.py
 
+和pyqt5文件夹同一个目录的都是在Standalone.py文件中修改
 过滤pyqt库魔改nuitka源文件 _下划线开头的代表是私函数，定义一个非_同名函数调用_线开头的函数运行
 D:\descrpypython\.venv\Lib\site-packages\nuitka
 
