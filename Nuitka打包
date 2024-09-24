@@ -22,6 +22,7 @@ D:\descrpypython\.venv\Lib\site-packages\nuitka
 D:\descrpypython\.venv\Lib\site-packages\nuitka\freezer文件夹下
 Standalone.py
 copyDllsUsed 函数中copy_standalone_entry_points改为如下：
+方法1
 copy_standalone_entry_points = [
         standalone_entry_point
         for standalone_entry_point in standalone_entry_points[1:]
@@ -29,6 +30,23 @@ copy_standalone_entry_points = [
         if 'qt5qml.dll' not in standalone_entry_point.dest_path
         if 'qt5qmlmodels.dll' not in standalone_entry_point.dest_path
         if 'qt5quick.dll' not in standalone_entry_point.dest_path
+        if not standalone_entry_point.kind.endswith("_ignored")
+    ]
+方法2
+exinclude_dll = ['qt5network.dll', 'qt5qml.dll', 'qt5qmlmodels.dll', 'qt5quick.dll', 'libeay32.dll', 'ssleay32.dll',
+             'qt5websockets.dll','libssl-1_1-x64.dll']
+condi = ['not in standalone_entry_point.dest_path'] * len(exinclude_dll)
+exinclude_dll = '" "'.join(exinclude_dll)
+fillwidth = len(exinclude_dll) + 2
+fillchar = '"'
+exinclude_dll = exinclude_dll.center(fillwidth, fillchar)
+exinclude_dll = str.split(exinclude_dll)
+exinclude_dll = [x + " " + y for x, y in zip(exinclude_dll, condi)]
+exinclude_dll = " and ".join(exinclude_dll)
+copy_standalone_entry_points = [
+        standalone_entry_point
+        for standalone_entry_point in standalone_entry_points[1:]
+        if eval(exinclude_dll)
         if not standalone_entry_point.kind.endswith("_ignored")
     ]
 
