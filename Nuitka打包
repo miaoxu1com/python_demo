@@ -15,9 +15,10 @@ D:/descrpypython/.venv/Scripts/python.exe -m nuitka
 --enable-plugin=pyqt5 
 D:/descrpypython/main.py
 
-过滤pyqt库魔改nuitka源文件
+过滤pyqt库魔改nuitka源文件 _下划线开头的代表是私函数，定义一个非_同名函数调用_线开头的函数运行
 D:\descrpypython\.venv\Lib\site-packages\nuitka
 
+D:\descrpypython\.venv\Lib\site-packages\nuitka\freezer文件夹下
 Standalone.py
 copyDllsUsed 函数中copy_standalone_entry_points改为如下：
 copy_standalone_entry_points = [
@@ -30,6 +31,18 @@ copy_standalone_entry_points = [
         if not standalone_entry_point.kind.endswith("_ignored")
     ]
 
+PySidePyQtPlugin.py
+getExtraDlls 函数中 _findQtPluginDLLs位置修改
+for r in self._findQtPluginDLLs():
+   if "imageformats" in r.dest_path:
+        continue
+   if "mediaservice" in r.dest_path:
+        continue
+   if "platformthemes" in r.dest_path:
+        continue
+   if "printsupport" in r.dest_path:
+        continue
+D:\descrpypython\.venv\Lib\site-packages\nuitka\Options.py文件中定义了命令行支持的参数
 
 uv pip install nuitka
 nuitka也会打包python3.dll ，pyinstaller也会打包 nuitkaui依赖程序下载，nuitkaui需要winlibs_mingw进行编译，而且需要安装提示的指定的版本，而且必须是zip的压缩包，放到指定的目录，程序会自动解压缩
