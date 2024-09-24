@@ -1,3 +1,4 @@
+第三方包和我们自己的包一样根目录下放入口文件，放其他模块的目录，在根目录下找入口文件就可以
 pycharm的文件中导入的包，不能是pycharm中打开的根目录否则找不到包
 pyqt程序Nuitka打包
 1.首先下载nuitkaui Toolkit打包程序 nuitkaui Toolkit是nuitka的gui工具，还是要python环境依赖nuitkaui，虚拟环境中需要安装nuitkaui才行，才能使用nuitkaui Toolkit打包 uv会创建exe文件的shim就是会自动把exe加入到环境变量类似pipx把exe变成全局工具，uv=pipx+pip python安装nuitka包
