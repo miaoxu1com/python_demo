@@ -1,5 +1,35 @@
 pyqt程序Nuitka打包
 1.首先下载nuitkaui Toolkit打包程序 nuitkaui Toolkit是nuitka的gui工具，还是要python环境依赖nuitkaui，虚拟环境中需要安装nuitkaui才行，才能使用nuitkaui Toolkit打包 uv会创建exe文件的shim就是会自动把exe加入到环境变量类似pipx把exe变成全局工具，uv=pipx+pip python安装nuitka包
+备注：用下来还是用nuitka命令行更方便
+build.bat
+D:/descrpypython/.venv/Scripts/python.exe -m nuitka 
+--output-filename=main 
+--standalone 
+--windows-disable-console 
+--nofollow-imports 
+--remove-output 
+--no-pyi-file 
+--assume-yes-for-downloads 
+--output-dir=D:\descrpypython\nuitka_output  
+--include-module=pywin32_bootstrap 
+--enable-plugin=pyqt5 
+D:/descrpypython/main.py
+
+过滤pyqt库魔改nuitka源文件
+D:\descrpypython\.venv\Lib\site-packages\nuitka
+
+Standalone.py
+copyDllsUsed 函数中copy_standalone_entry_points改为如下：
+copy_standalone_entry_points = [
+        standalone_entry_point
+        for standalone_entry_point in standalone_entry_points[1:]
+        if 'qt5network.dll' not in  standalone_entry_point.dest_path
+        if 'qt5qml.dll' not in standalone_entry_point.dest_path
+        if 'qt5qmlmodels.dll' not in standalone_entry_point.dest_path
+        if 'qt5quick.dll' not in standalone_entry_point.dest_path
+        if not standalone_entry_point.kind.endswith("_ignored")
+    ]
+
 
 uv pip install nuitka
 nuitka也会打包python3.dll ，pyinstaller也会打包 nuitkaui依赖程序下载，nuitkaui需要winlibs_mingw进行编译，而且需要安装提示的指定的版本，而且必须是zip的压缩包，放到指定的目录，程序会自动解压缩
