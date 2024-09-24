@@ -11,8 +11,8 @@ Galaxy插件安装
 │  └─pyenv
 ├─jre
 1.jre环境安装jdk
-2.jenv放入jython-standalone-x.x.x.jar
-3.pyenv放入python-language-x.x.x.jar
+2.jenv放入jython-standalone-x.x.x.jar 单独放
+3.pyenv放入python-language-x.x.x.jar 单独放
 graalvm
 https://mvnrepository.com/artifact/org.graalvm.python/python-language/24.1.0
 4.配置burpsuite
