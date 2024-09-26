@@ -28,6 +28,14 @@ gitcode clone 不用注册账号 只是下载研究别人代码学习使用https
 需要全局安装anyproxy，然后再D:\ast-hook-for-js-RE-0.2\src目录局部再安装一次才能正常运行否则提示找不到anyproxy模块
 中途安装anyproxy终止生成了package.json.lock需要先删除，重新执行安装否则安装报错
 
+gradewl 构建
+设置环境变量为构建项目的版本
+设置vmoption encoding为utf否则中文会报错
+需要先在项目目录下gradel.build 文件设置全局mvn respo库为源镜像地址
+grade的ini.d库中设置源镜像地址
+wrapper.jar是因为上传git设置忽略文件导致丢失
+wrapper.jar丢失重新构建，在gradel.build添加wrapper构建任务，构建后gradel.build又被重置为官方库重新设置为源镜像地址
+
 
 课程
 编程猫js逆向教程二期
