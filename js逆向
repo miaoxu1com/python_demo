@@ -23,6 +23,11 @@ python environment 配置为python-language-x.x.x.jar
 gitee  clone 不用注册账号  只是下载研究别人代码学习使用https下载即可
 gitcode clone 不用注册账号 只是下载研究别人代码学习使用https下载即可
 
+先为npm配置全局镜像源为淘宝源
+使用ast-hook-for-js-RE遇到的问题
+需要全局安装anyproxy，然后再D:\ast-hook-for-js-RE-0.2\src目录局部再安装一次才能正常运行否则提示找不到anyproxy模块
+中途安装anyproxy终止生成了package.json.lock需要先删除，重新执行安装否则安装报错
+
 
 课程
 编程猫js逆向教程二期
