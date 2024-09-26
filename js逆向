@@ -38,7 +38,8 @@ grade的ini.d库中设置源镜像地址
 wrapper.jar是因为上传git设置忽略文件导致丢失
 wrapper.jar丢失重新构建，在gradel.build添加wrapper构建任务，构建后gradel.build又被重置为官方库重新设置为源镜像地址
 
-ast-hook-for-js-RE 很多网站代理都失败 另外官方还有bug需要修改代码ast-hook-for-js-RE-0.2\src\components\global-assign-hook-component\core\plugins-manager.js 文件中的hookJsCode = fs.readFileSync和pluginsBaseDirectory 路径为绝对路径
+ast-hook-for-js-RE 很多网站代理都失败 另外官方还有bug需要修改代码ast-hook-for-js-RE-0.2\src\components\global-assign-hook-component\core\plugins-manager.js 文件中的hookJsCode = fs.readFileSync和pluginsBaseDirectory 路径为绝对路径,ast解析慢有延时，非目标网站的请求也会
+解析，而且不是万能的
 
 课程
 编程猫js逆向教程二期
