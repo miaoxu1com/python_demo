@@ -38,6 +38,8 @@ gitcode clone 不用注册账号 只是下载研究别人代码学习使用https
 gradewl 构建
 设置环境变量为构建项目的版本
 设置vmoption encoding为utf否则中文会报错
+-Dfile.encoding=utf-8
+
 需要先在项目目录下gradel.build 文件设置全局mvn respo库为源镜像地址
 grade的ini.d库中设置源镜像地址
 wrapper.jar是因为上传git设置忽略文件导致丢失
