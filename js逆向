@@ -33,6 +33,11 @@ wrapper  {
     gradleVersion = '8.5'
 }
 
+删除增加的wrapper任务
+
+然后就可以使用idea打开build.gradle，直接使用运行按钮运行
+
+
 Galaxy插件安装
 ├─BurpSuite
 │  ├─jenv
