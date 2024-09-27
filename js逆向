@@ -4,6 +4,11 @@ https://github.com/jxhczhl/JsRpc
 https://github.com/outlaws-bai/Galaxy/blob/main/docs/Custom.md
 https://github.com/outlaws-bai/GalaxyDemo
 
+build.gradle新增
+wrapper  {
+    gradleVersion = '8.5'
+}
+
 Galaxy插件安装
 ├─BurpSuite
 │  ├─jenv
