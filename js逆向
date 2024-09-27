@@ -4,6 +4,30 @@ https://github.com/jxhczhl/JsRpc
 https://github.com/outlaws-bai/Galaxy/blob/main/docs/Custom.md
 https://github.com/outlaws-bai/GalaxyDemo
 
+文件设置为国内镜像
+gradle\wrapper\gradle-wrapper.properties
+distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.5-bin.zip
+
+gradle.properties项目根目录有加入，没有不管
+
+# 配置 Maven 仓库镜像
+systemProp.org.gradle.internal.http.proxyHost=mirrors.cloud.tencent.com
+systemProp.org.gradle.internal.http.proxyPort=80
+
+# 配置 Gradle 插件库镜像
+org.gradle.plugin.portal=https://mirrors.cloud.tencent.com/nexus/content/repositories/gradle-plugins/
+
+# 配置 Maven 仓库
+systemProp.org.gradle.repository.url=https://mirrors.cloud.tencent.com/maven/
+
+# 配置 JCenter 仓库
+systemProp.org.gradle.jcenter.url=https://mirrors.cloud.tencent.com/jcenter/
+
+# 配置 Maven Central 仓库
+systemProp.org.gradle.maven.central.url=https://mirrors.cloud.tencent.com/maven2/
+
+
+
 build.gradle新增
 wrapper  {
     gradleVersion = '8.5'
