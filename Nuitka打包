@@ -18,7 +18,7 @@ D:\descrpypython\.venv\Lib\site-packages\nuitka下的__main__
     if _nuitka_package_home is not None:
         sys.argv[1:] = ['--output-filename=main',
                         '--onefile',
-                        '--debug',
+                        # '--debug',
                         '--windows-disable-console',
                         '--nofollow-imports',
                         '--remove-output',
