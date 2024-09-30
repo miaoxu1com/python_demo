@@ -2,12 +2,30 @@
 nuitak入口
 D:\descrpypython\.venv\Lib\site-packages\nuitka下的__main__
 新增从命令行获取的值就可以直接在pycharm中执行代码了
+    # 正常用
     if _nuitka_package_home is not None:
         sys.argv[1:] = ['--output-filename=main',
                         '--standalone',
                         '--windows-disable-console',
                         '--nofollow-imports',
                         '--remove-output',
+                        '--no-pyi-file',
+                        '--assume-yes-for-downloads',
+                        '--output-dir=D:\\descrpypython\\nuitka_output',
+                        '--include-module=pywin32_bootstrap',
+                        '--enable-plugin=pyqt5', 'D:/descrpypython/main.py']
+    # 输出更详细的日志信息
+    if _nuitka_package_home is not None:
+        sys.argv[1:] = ['--output-filename=main',
+                        '--onefile',
+                        '--debug',
+                        '--windows-disable-console',
+                        '--nofollow-imports',
+                        '--remove-output',
+                        '--windows-icon-from-ico=D:/descrpypython/main.ico',
+                        # '--show-progress',
+                        # '--show-scons',
+                        # '--plugin-enable=upx'
                         '--no-pyi-file',
                         '--assume-yes-for-downloads',
                         '--output-dir=D:\\descrpypython\\nuitka_output',
