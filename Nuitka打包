@@ -2,6 +2,7 @@
 第三方包和我们自己的包一样根目录下放入口文件，放其他模块的目录，在根目录下找入口文件就可以
 nuitak入口
 D:\descrpypython\.venv\Lib\site-packages\nuitka下的__main__
+修改完后要及时修改回来否则调用模块打包，每次都是用的以下写死的代码
 新增从命令行获取的值就可以直接在pycharm中执行代码了
     # 正常用
     if _nuitka_package_home is not None:
