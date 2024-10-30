@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>pywebview Example</title>
+</head>
+<body>
+    <h1>Hello, pywebview!</h1>
+    <button onclick="pywebview.api.say_hello()">Click me</button>
+    <button onclick="pywebview.api.open_file()">Click me</button>
+    <script>
+        document.addEventListener('pywebviewready', function() {
+            pywebview.api.get_message().then(function(response) {
+                alert(response);
+            });
+        });
+    </script>
+</body>
+</html>
