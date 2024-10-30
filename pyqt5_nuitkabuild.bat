@@ -1,0 +1,3 @@
+D:/descrpypython/.venv/Scripts/python.exe -m nuitka --show-process --show-scons --debug --assume-yes-for-downloads --onefile --output-filename=main --windows-disable-console -windows-icon-from-ico=D:/descrpypython/main.ico --no-follow-imports --remove-output --no-pyi-file --assume-yes-for-downloads --output-dir=D:/descrpypython/nuitka_output  --include-module=pywin32_bootstrap --plugin-enable=upx --enable-plugin=pyqt5 D:/descrpypython/main.py
+pause
+D:/descrpypython/.venv/Scripts/python.exe -m nuitka --onefile --output-filename=main --windows-disable-console --windows-icon-from-ico=D:\descrpypython\main.ico --remove-output --no-pyi-file --output-dir=D:\descrpypython\nuitka_output  --include-module=pywin32_bootstrap --enable-plugin=pyqt5 D:\descrpypython\main.py
