@@ -1,0 +1,5 @@
+[config]
+_sender = '1'
+_to = ['2']
+email_url = '3'
+email_pass = '4'

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>邮箱发送</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<div class="d-grid gap-4 mx-auto">
+    <div class="d-grid gap-2 col-5 mx-auto">
+        <label>邮箱地址</label>
+        <input type="text" class="form-control" id="email">
+    </div>
+    <div class="d-grid gap-4 col-4 mx-auto">
+        <button name="send_email" class="btn btn-primary" type="button" onclick="sendEmail()">发送
+        </button>
+        <button name="open_email" class="btn btn-primary" type="button" onclick="openEmail()">查看邮箱
+        </button>
+    </div>
+</div>
+<script src="bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+</script>
+<script>
+    function sendEmail() {
+        const email_url = document.getElementById('email').value;
+        if (email_url) {
+            pywebview.api.send_email(email_url).then(response => {
+                alert(response);
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        } else {
+            alert('请输入邮箱地址');
+        }
+    }
+
+    document.addEventListener('pywebviewready', function () {
+        console.log('pywebviewready event triggered');
+    });
+
+    function openEmail() {
+        pywebview.api.open_email().then(data => {
+            window.document.cookie = data
+            // window.location.href = 'https://p88528v.hulk.bjzdd.qihoo.net/mail/';
+
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+
+    }
+</script>
+</body>
+</html>
