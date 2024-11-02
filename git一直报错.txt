@@ -1,0 +1,27 @@
+fatal: Could not read from remote repository
+
+出现这错误一般是以下两种原因：
+客户端与服务端未生成 ssh key
+客户端与服务端的 ssh key 不匹配
+为解决以上问题，我们需要重新生成一次 ssh key ，并重新配置一下 GitHub 账户即可。
+
+ssh-keygen -t rsa -b 4096 -C "邮箱"
+
+get-service ssh*
+Start-Service ssh-agent
+ ssh-add C:\Users\mxpc\.ssh\id_rsa
+ ssh-add -l
+ ssh-add -D 
+ 
+ 以下是解决“Host Key Verification Failed”错误的几种方法。
+ 方法一：手动更新known_hosts文件
+ ssh-keygen -R <hostname or IP address>
+ 其中，<hostname or IP address>是远程仓库的主机名或IP地址。这将从known_hosts文件中删除指定的主机密钥。然后，再次连接远程仓库，Git将重新获取并保存最新的主机密钥。
+ 方法二：禁用主机密钥验证
+ 如果你相信远程仓库是安全的，你可以选择在Git配置中禁用主机密钥验证。这可以通过运行以下命令来实现：
+ git config --global --add core.sshCommand "ssh -o StrictHostKeyChecking=no"
+ 运行该命令后，Git将不再验证主机密钥，而是自动接受任何主机密钥。请注意，这会降低连接的安全性，只在你可信任的远程仓库上使用。
+ 方法三：检查known_hosts文件
+ 如果以上两种方法都无法解决问题，你可以手动检查本地计算机的known_hosts文件。在Unix和类Unix系统上，该文件通常位于用户目录的.ssh文件夹中。在Windows系统上，该文件位于%USERPROFILE%\.ssh文件夹中。
+首先，打开known_hosts文件，并查找包含远程仓库主机名或IP地址的行。如果找到该行，将其删除。然后，再次连接远程仓库，Git将重新获取并保存最新的主机密钥。
+
