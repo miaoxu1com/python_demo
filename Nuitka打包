@@ -36,6 +36,15 @@ D:\descrpypython\.venv\Lib\site-packages\nuitka下的__main__
 不用注入可以直接在main中调用sys.argv,生命周期是main函数执行完所以在Option中也可以用
 main中引入Option解析参数，之后调用MainControl.py执行后续操作
 
+这种方式打包出来的文件很小，但是不是独立的需要系统安装脚本使用的python版本
+D:/pyview_demo/.venv/Scripts/python.exe -m nuitka --debug --assume-yes-for-downloads --output-filename=send_mail 
+--windows-disable-console --windows-icon-from-ico=D:/descrpypython/main.ico 
+--remove-output --no-pyi-file --assume-yes-for-downloads 
+--output-dir=D:/pyview_demo/nuitka_output 
+--include-module=http_send_mail 
+--plugin-enable=pywebview D:/pyview_demo/http_send_mail_index.py
+
+
 pycharm的文件中导入的包，不能是pycharm中打开的根目录否则找不到包
 pyqt程序Nuitka打包
 1.首先下载nuitkaui Toolkit打包程序 nuitkaui Toolkit是nuitka的gui工具，还是要python环境依赖nuitkaui，虚拟环境中需要安装nuitkaui才行，才能使用nuitkaui Toolkit打包 uv会创建exe文件的shim就是会自动把exe加入到环境变量类似pipx把exe变成全局工具，uv=pipx+pip python安装nuitka包
