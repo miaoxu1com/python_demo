@@ -1,3 +1,4 @@
 from typing import List, Dict
 accounts: List[Dict[str, str]]  这个代表是list 元素是字典  dict有key value 所以要用[str,str]指出 key,value都是字符串类型的
 
+Optional 是一个泛型类型，它来自于 typing 模块。Optional 表示一个值可以是某个类型，也可以是 None
