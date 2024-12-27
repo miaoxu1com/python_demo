@@ -23,7 +23,8 @@ pyenv
 安装
 https://www.jianshu.com/p/8846c488a568
 
-# PYTHON_BUILD_MIRROR_URL 设置下载加速地址 https://jedore.netlify.app/tools/python-mirrors/  这个不知道是那里的看到的
+pyenv的镜像源地址
+PYTHON_BUILD_MIRROR_URL 设置下载加速地址 https://jedore.netlify.app/tools/python-mirrors/  
 参考：https://blog.csdn.net/qq_34419312/article/details/140447081
 
 uv 
