@@ -19,6 +19,8 @@ https://hellowac.github.io/uv-zh-cn/configuration/environment/#rust_log
 
 uv 和 pyenv 压缩包都是tar.gz包，是使用开源的压缩格式
 
+uv self update 更新最新的版本  否则uv python list的版本不是最新的
+
 pyenv
 安装
 https://www.jianshu.com/p/8846c488a568
