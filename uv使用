@@ -15,7 +15,7 @@ rye 使用手册
 https://rye.astral.sh/guide/
 https://vra.github.io/2023/05/17/rye-intro/
 https://www.fournoas.com/posts/rye-python-environment-and-package-management-tool/
-
+https://hellowac.github.io/uv-zh-cn/configuration/environment/#rust_log
 
 uv 和 pyenv 压缩包都是tar.gz包，是使用开源的压缩格式
 
