@@ -3,3 +3,6 @@ https://blog.csdn.net/m0_57110410/article/details/131266980
 
 pip二进制文件中会存在写死路径的情况，直接更新到最新版本就可以
 uvicorn也存在写死路径的情况，需要卸载重新安装
+
+理解环境变量
+https://www.cnblogs.com/piperliu/p/18646310
