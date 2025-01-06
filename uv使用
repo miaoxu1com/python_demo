@@ -49,7 +49,14 @@ uv init
 uv python install 3.7.9
 uv venv --python 3.7.9
 .venv\Scripts\activate
-
+uv pip compile pyproject.toml -o requirements.txt 
+# 全量更新
+uv pip compile pyproject.toml --upgrade -o requirements.txt 
+# 只更新部分依赖
+uv pip compile pyproject.toml --upgrade flask -o requirements.txt 
+# 使用 pip-tools 的 sync，可以依据 requirements.txt 更新 site-packages 中的依赖包，让 requirements.txt 中删除了软件包，sync 后，
+# 环境中的依赖包也会被移除。
+uv pip sync requirements.txt
 
 uv配置方案
 Python发现
