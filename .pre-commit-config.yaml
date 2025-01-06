@@ -1,0 +1,58 @@
+---
+repos:
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.5.14
+    hooks:
+      - id: uv-lock
+        name: Update uv.lock file
+        entry: uv pip compile --output-file=uv.lock
+        language: python
+        types: [python]
+
+      - id: uv-export
+        name: Export requirements.txt
+        entry: uv pip compile --output-file=requirements.txt
+        language: python
+        types: [python]
+
+      - id: pip-compile
+        name: Compile requirements.in
+        entry: uv pip compile requirements.in --output-file=requirements.txt
+        language: python
+        types: [python]
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.28.0
+    hooks:
+      - id: yamllint
+        name: Run yamllint (YAML linting)
+        entry: yamllint
+        types: [yaml]
+        args: [--strict]
+
+  - repo: https://github.com/psf/black
+    rev: 23.9.1
+    hooks:
+      - id: black
+        name: Run black (code formatting)
+        entry: black .
+        language: python
+        types: [python]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.0.287
+    hooks:
+      - id: ruff
+        name: Run ruff (linting)
+        entry: ruff check --fix .
+        language: python
+        types: [python]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.6.1
+    hooks:
+      - id: mypy
+        name: Run mypy (type checking)
+        entry: mypy .
+        language: python
+        types: [python]
