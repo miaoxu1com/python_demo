@@ -3,6 +3,7 @@ pypy cpython
 https://www.python.org/download/alternatives/
 https://blog.csdn.net/m0_51971452/article/details/115279922
 https://blog.yasking.org/a/python-project-manager-uv.html
+https://pydevtools.com/blog/effective-python-developer-tooling-in-december-2024/
 uv环境变量和配置文件同时使用来配置
 
 uv 管理python 
