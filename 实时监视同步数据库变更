@@ -1,0 +1,18 @@
+https://nightlies.apache.org/flink/flink-cdc-docs-release-3.0/zh/docs/get-started/introduction/
+Flink CDC
+Flink CDC 是一个基于流的数据集成工具，旨在为用户提供一套功能更加全面的编程接口（API）。 该工具使得用户能够以 YAML 配置文件的形式，优雅地定义其 ETL（Extract, Transform, Load）流程，并协助用户自动化生成定制化的 Flink 算子并且提交 Flink 作业。
+Flink CDC 在任务提交过程中进行了优化，并且增加了一些高级特性，
+如表结构变更自动同步（Schema Evolution）、
+数据转换（Data Transformation）、
+整库同步（Full Database Synchronization）以及 精确一次（Exactly-once）语义。
+
+我们数据库中的数据一直在变化，有时候我们希望能监听数据库数据的变化并根据变化做出一些反应，比如更新对应变化数据的缓存、增量同步到其它数据源、对数据进行检测和审计等等
+而这种技术就叫变更数据捕获（Change Data Capture）。对于这种技术我们可能知道一个国内比较知名的框架Canal，非常好用！但是Canal有一个局限性就是只能用于Mysql的变更数据捕获。今天来介绍另一种更加强大的分布式CDC框架Debezium
+通过Debezium实时监听到binlog日志的变化触发捕获变更事件
+https://blog.csdn.net/saqin6255/article/details/131255825
+CDC主要分以下两类
+基于查询的 CDC：优点是实现简单，是通过批处理实现的，需要依赖离线调度，不能保证数据强一致性和实时性；
+基于日志的 CDC：实现比较复杂，但是可以实时消费日志，流式处理，可保证数据一致性和实时性；
+如上图所示，从CDC机制、增量同步、断电续传、全量同步、全量+增量、架构、数据计算、生态这八个方面做了对比。可以看出其中的佼佼者主要是Flink CDC和Oracle OGG以及Debezium；
+由于基于查询的CDC方案缺陷明显，这里不作讨论，下面我们对基于日志的CDC方案的优劣来做详细的介绍。
+Flink CDC：Flink CDC是最近几年的新贵，Flink CDC 底层封装了 Debezium，功能比较全面，目前已经迭代到了2.4版本，社区活跃度在几个方案中是最高的；
