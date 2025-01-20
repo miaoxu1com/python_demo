@@ -1,2 +1,13 @@
 https://hf.qhduan.com/spaces/breezedeus/CnOCR-Demo
 https://cnocr.readthedocs.io/zh-cn/stable/
+https://rapidai.github.io/RapidOCRDocs/install_usage/rapidocr/install/
+经实践测试了开源的ocr
+rapidocr-onnxruntime 不准确 慢
+RapidOCR在调用时，有三个参数use_det | use_cls | use_rec，可以控制是否使用检测、方向分类和识别这三部分，不同的参数决定了不同的输出
+rapidocr_onnxruntime和rapidocr_openvino两个包除推理引擎不同之外，其余均相同。后续说明文档均以rapidocr_onnxruntime为例
+如使用rapidocr_openvino，直接更换关键词rapidocr_onnxruntime为rapidocr_openvino即可。
+
+两者均是在CPU上推理的，如想在GPU上推理，可以参考rapidocr_paddle版
+paddle-慢 不准确
+cnocr  慢 不准确
+ddddocr 准确 且速度快 默认参数即可准确识别
