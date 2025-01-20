@@ -1,6 +1,13 @@
 https://hf.qhduan.com/spaces/breezedeus/CnOCR-Demo
 https://cnocr.readthedocs.io/zh-cn/stable/
 https://rapidai.github.io/RapidOCRDocs/install_usage/rapidocr/install/
+https://cloud.baidu.com/article/3251533
+
+OpenVINO：OpenVINO是Intel推出的一个跨平台的推理框架，支持CPU、GPU、FPGA等多种硬件。它支持FP32和FP16精度，通过硬件加速和优化技术提升推理性能
+ONNX Runtime：ONNX Runtime是一个轻量级的推理框架，支持多种硬件平台，包括CPU、GPU等。它支持FP32和FP16精度，通过优化算子实现高效的推理
+PyTorch：PyTorch是一个流行的深度学习框架，以其动态计算图和易用性而著称。它支持CPU和GPU推理，但原生推理性能可能不是最优的
+TensorRT：TensorRT是NVIDIA推出的一个高性能推理框架，专门针对NVIDIA GPU进行优化。它支持FP32和FP16精度，通过层融合、精度校准等技术提升推理速度
+
 经实践测试了开源的ocr
 rapidocr-onnxruntime 不准确 慢
 RapidOCR在调用时，有三个参数use_det | use_cls | use_rec，可以控制是否使用检测、方向分类和识别这三部分，不同的参数决定了不同的输出
