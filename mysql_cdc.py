@@ -4,7 +4,7 @@ from datetime import datetime
 from pymysqlreplication import BinLogStreamReader
 from pymysqlreplication.row_event import WriteRowsEvent
 
-#由于监控捕获的模块和发送模块处理速度并不一致，发送需要耗时可能产生阻塞，而捕获数据是实时的，所以要进行解耦，使用两个进程进行处理
+#由于监控捕获的模块和发送模块处理速度并不一致，发送需要耗时可能产生阻塞，而捕获数据是实时的，所以要进行解耦，使用两个进程进行处理，能够高效地捕获实时数据，同时避免处理逻辑阻塞监控进程
 # https://docs.python.org/3.6/library/multiprocessing.html#multiprocessing.SimpleQueue
 # 这里就要使用多进程之间的通信机制了 ipc ，a写数据，b处理数据，处理完后清空
 
