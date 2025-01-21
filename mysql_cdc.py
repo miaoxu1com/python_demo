@@ -4,6 +4,8 @@ from datetime import datetime
 from pymysqlreplication import BinLogStreamReader
 from pymysqlreplication.row_event import WriteRowsEvent
 
+#由于监控捕获的模块和发送模块处理速度并不一致，发送需要耗时可能产生阻塞，而捕获数据是实时的，所以要进行解耦，使用两个进程进行处理
+
 # MySQL 连接配置
 mysql_settings = {
     'host': '',
