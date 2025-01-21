@@ -1,0 +1,4 @@
+线程间传递信号、同步操作几种方法
+1.Queue 
+2.Event
+3.Condition
