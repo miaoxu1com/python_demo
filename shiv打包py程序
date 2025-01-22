@@ -3,6 +3,8 @@ pyproject.toml 和 setup.py 是一样的效果
 shiv -c async_get_change_data -o mysql_cdc.pyz .
 uv pip sync pyproject.toml 会删除已安装未在项目中引用的第三方包
 打包pyz的pyproject.toml项目配置文件如下
+https://www.bitecode.dev/p/all-your-python-project-in-one-file
+
 
 pyproject.toml
 [project]
