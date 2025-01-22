@@ -1,4 +1,4 @@
-# 共享缓存处理数据
+# 共享缓存处理数据，未跨主机，同一个主机上的生产者消费者放在不同的文件中进行解耦，如果是生产者和消费者分布在不同的主机上，那就要通过中间件通过网络的方式通信传输了
 import time
 from multiprocessing.shared_memory import SharedMemory
 
