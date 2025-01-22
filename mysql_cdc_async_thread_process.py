@@ -202,7 +202,7 @@ def data_consumer():
 
 # 主函数
 async def main():
-    # 启动监控协程和消费协程
+    # 启动监控协程和消费协程 asyncio.to_thread python3.9 引入的 低版本用不了
     monitor_task = asyncio.to_thread(binlog_monitor)
     consumer_task = asyncio.to_thread(data_consumer)
 
