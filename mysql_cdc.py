@@ -1,6 +1,6 @@
 import json
 from datetime import datetime
-
+from multiprocessing.shared_memory import SharedMemory
 from pymysqlreplication import BinLogStreamReader
 from pymysqlreplication.row_event import WriteRowsEvent
 
@@ -178,26 +178,35 @@ stream = BinLogStreamReader(
     log_pos=log_pos  # 从上次解析的位置开始
 )
 
-
-# 监听 BINLOG
-try:
+def monitor_binlog():
+   shm = SharedMemory(name="my_shared_memory", create=True, size=100)
+   # 监听 BINLOG
+   try:
     for binlogevent in stream:
-            print(f"当前binlog file是{stream.log_file}")
-            print(f"当前binlog file pos是{stream.log_pos}")
-        # 检查事件类型
-            event_time = datetime.fromtimestamp(binlogevent.timestamp)  # 获取事件时间戳
-            today_start = get_today_start_time()
-            # 检查事件是否发生在当天
-            if event_time >= today_start:
-                print(f"发现新数据插入，表: {binlogevent.table}")
-                print(f"事件时间戳: {event_time}")
-                for row in binlogevent.rows:
-                    # 记录插入的数据
-                    print("插入的数据:", row['values'])
-                    # 可以将数据写入文件或数据库
-                    # with open('insert_log.txt', 'a') as f:
-                    #     f.write(f"表: {binlogevent.table}, 数据: {row['values']}\n")
-                save_position(stream.log_file, stream.log_pos)
-finally:
-    # 关闭流
-    stream.close()
+      print(50 * "=")
+      print(f"当前binlog file是{stream.log_file}")
+      print(f"当前binlog file pos是{stream.log_pos}")
+  # 检查事件类型
+      event_time = datetime.fromtimestamp(binlogevent.timestamp)  # 获取事件时间戳
+      today_start = get_today_start_time()
+      # 检查事件是否发生在当天
+      if event_time >= today_start:
+          print(f"发现新数据插入，表: {binlogevent.table}")
+          print(f"事件时间戳: {event_time}")
+          for row in binlogevent.rows:
+              email_addr = row['values']['UNKNOWN_COL3']
+              # 记录插入的数据
+              print("插入的邮箱地址:", email_addr)
+              shm.buf[:len(email_addr)] = email_addr.encode('utf-8')
+              print(f"监控进程：捕获到插入事件，数据已存入缓存 -> {email_addr}")
+              # 可以将数据写入文件或数据库
+              # with open('insert_log.txt', 'a') as f:
+              #     f.write(f"表: {binlogevent.table}, 数据: {row['values']}\n")
+          save_position(stream.log_file, stream.log_pos)
+   finally:
+       # 关闭流
+       stream.close()
+   
+if __name__ == "__main__":
+    # 启动监控进程
+    monitor_binlog()
