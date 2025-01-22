@@ -6,6 +6,38 @@ import time
 from pymysqlreplication import BinLogStreamReader
 from pymysqlreplication.row_event import WriteRowsEvent
 
+# asyncio.Queue
+
+    # 设计目标：专为异步编程设计，用于协程之间的数据传递。
+
+    # 适用场景：适用于异步 I/O 操作（如网络请求、文件读写等）的场景。
+
+    # 特点：
+
+        # 非阻塞：put 和 get 方法是异步的，使用 await 关键字调用。
+
+        # 协程安全：只能在协程中使用，不能在多线程或多进程中直接使用。
+
+        # 事件循环依赖：依赖于 asyncio 事件循环。
+
+        # 高性能：由于是单线程的，上下文切换开销小，适合高并发的 I/O 密集型任务。
+
+# queue.Queue
+
+   # 设计目标：专为多线程编程设计，用于线程之间的数据传递。
+
+   # 适用场景：适用于多线程编程的场景。
+
+   # 特点：
+
+      #  阻塞：put 和 get 方法是同步的，会阻塞当前线程。
+
+      #  线程安全：支持多线程环境，内部使用锁机制确保线程安全。
+
+      #  无事件循环依赖：不依赖于 asyncio 事件循环。
+
+      #  适合 CPU 密集型任务：由于是多线程的，适合需要并行计算的场景。
+
 # MySQL 连接配置
 mysql_settings = {
     'host': '',
