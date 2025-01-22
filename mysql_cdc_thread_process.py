@@ -67,6 +67,7 @@ from pymysqlreplication.row_event import WriteRowsEvent
  #   使用 asyncio.to_thread 或 loop.run_in_executor 将阻塞任务放到线程中运行，避免阻塞事件循环。
 
   #  这是处理阻塞任务的推荐方式。
+# I/O 密集型任务：如网络请求、数据库查询、文件读写等。
 
 # MySQL 连接配置
 mysql_settings = {
