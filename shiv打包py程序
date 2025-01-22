@@ -1,0 +1,28 @@
+pyproject.toml 和 setup.py 是一样的效果
+
+shiv -c async_get_change_data -o mysql_cdc.pyz .
+uv pip sync pyproject.toml 会删除已安装未在项目中引用的第三方包
+打包pyz的pyproject.toml项目配置文件如下
+
+pyproject.toml
+[project]
+name = "mysql-cdc"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mysql-replication>=1.0.9",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+#include = ["async_get_change_data*"]  # 指定需要包含的模块
+# shiv --site-packages ./.venv/Lib/site-packages -c async_get_change_data -o mysql_cdc.pyz . 指定包的搜索路径
+
+[project.scripts]
+async_get_change_data = "async_get_change_data:main"
