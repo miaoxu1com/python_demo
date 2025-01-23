@@ -1,0 +1,5 @@
+在软件的设计当中前人已经总结了许多的设计原则和设计模式。例如 SOLID，GRASP 设计原则，这些原则都是基于面向对象设计总结而来的
+而 GOF23 是基于许多常见的场景总结出了一套设计模式，在我们遇到类似的场景，都可以套用设计模式
+理解 DRY、KISS、YAGNI 三原则
+
+https://blog.csdn.net/yuanlaijike/article/details/101565237
