@@ -11,6 +11,7 @@ import simdjson
 import simplejson as sjson
 import ujson
 
+# 处理大json文件时，大于内存的文件时，使用流式读取
 fname = "large-file.json"
 
 
