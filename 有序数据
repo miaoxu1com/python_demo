@@ -1,6 +1,23 @@
-优先级队列：堆常用于实现优先级队列，例如任务调度
+优先级队列：堆常用于实现优先级队列，例如任务调度，heapq 没有办法在堆上迭代，只有添加和删除元素的方法。通过 heappop 迭代/遍历堆：可以按顺序遍历，但会清空堆
 https://www.bitecode.dev/p/how-not-to-sort-in-python
 堆数据结构基本上用作堆排序算法，用于对数组或列表中的元素进行排序。这些算法可用于优先级队列、订单统计、Prim 算法或 Dijkstra 算法等
 Python 使用堆数据结构，因为它是存储有序元素集合的高效方法。它对于跟踪集合中最大和最小的元素很有用，这是许多算法和数据结构中的常见任务。优先级队列通常用于任务调度和网络路由，也是使用堆实现的
 https://favtutor.com/blogs/heap-in-python
 https://robamu.github.io/posts/packaging-python-in-2023/
+bisect维护有序列表
+
+sortedcontainers 提供了以下三种主要的有序容器：
+
+    SortedList：有序列表，支持快速插入、删除和查找。
+
+    SortedSet：有序集合，支持快速插入、删除和查找。
+
+    SortedDict：有序字典，支持按键排序，并支持快速插入、删除和查找。
+
+这些容器的核心特点是：
+
+    高效：基于平衡树（如 B 树）实现，插入、删除和查找的时间复杂度为 O(log n)。
+
+    易用：提供了简单的 API，可以轻松操作有序数据。
+
+    纯 Python 实现：不需要额外的 C 扩展，兼容性好。
