@@ -1,0 +1,38 @@
+FastDepends 的简单示例
+
+假设你有一个函数需要用到数据库连接，使用 FastDepends 可以这样写：
+python
+复制
+
+from fastdepends import Depends
+
+# 模拟一个数据库连接
+def get_db_connection():
+    return "Database Connection"
+
+# 定义一个函数，依赖数据库连接
+def process_data(db_connection: str = Depends(get_db_connection)):
+    print(f"Processing data with {db_connection}")
+
+# 调用函数
+process_data()
+
+    Depends：用于声明依赖关系。process_data 函数依赖 get_db_connection 函数返回的数据库连接。
+
+    自动注入：FastDepends 会自动调用 get_db_connection 函数，并将结果传递给 process_data 函数。
+
+4. FastDepends 的优点
+
+    简洁：通过 Depends 声明依赖关系，代码更简洁。
+
+    灵活：可以轻松替换依赖的实现，方便测试和扩展。
+
+    高效：FastDepends 会自动缓存依赖，避免重复创建。
+
+5. 适用场景
+
+    Web 开发：在 FastAPI 等框架中，FastDepends 可以用于管理路由的依赖（例如数据库连接、用户认证等）。
+
+    测试：通过依赖注入，可以轻松替换依赖的实现，方便单元测试。
+
+    复杂应用：在复杂的应用中，FastDepends 可以帮助你更好地组织和管理依赖关系
